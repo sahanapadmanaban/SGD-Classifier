@@ -7,22 +7,63 @@ To write a program to predict the type of species of the Iris flower using the S
 2. Anaconda – Python 3.7 Installation / Jupyter notebook
 
 ## Algorithm
-1. 
-2. 
-3. 
-4. 
+
+1.Load and prepare the dataset Import required libraries and load the Iris dataset with features and target species labels.
+
+2.Split the data Divide the dataset into training and testing sets.
+
+3.Scale the features Apply feature scaling using StandardScaler to normalize input values.
+
+4.Train the SGD Classifier Initialize the SGD classifier and fit it using the training data.
+
+5.Predict and evaluate Predict species for test data and compute accuracy, classification report, and confusion matrix.
+
 
 ## Program:
 ```
 /*
 Program to implement the prediction of iris species using SGD Classifier.
-Developed by: 
-RegisterNumber:  
+Developed by: P.SAHANA
+RegisterNumber:  212225040355
+
+from sklearn.datasets import load_iris
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
+from sklearn.linear_model import SGDClassifier
+from sklearn.metrics import accuracy_score, classification_report, confusion_matrix
+
+
+iris = load_iris()
+X = iris.data
+y = iris.target
+
+
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.2, random_state=1
+)
+
+
+scaler = StandardScaler()
+X_train = scaler.fit_transform(X_train)
+X_test = scaler.transform(X_test)
+
+
+model = SGDClassifier(max_iter=1000, tol=1e-3, random_state=1)
+model.fit(X_train, y_train)
+
+
+y_pred = model.predict(X_test)
+
+
+print("Accuracy:", accuracy_score(y_test, y_pred))
+print("\nClassification Report:\n", classification_report(y_test, y_pred))
+print("\nConfusion Matrix:\n", confusion_matrix(y_test, y_pred))
 */
 ```
 
 ## Output:
-![prediction of iris species using SGD Classifier](sam.png)
+<img width="659" height="477" alt="image" src="https://github.com/user-attachments/assets/5dfe6321-7d98-444e-bf73-e99965c0a0f4" />
+
 
 
 ## Result:
